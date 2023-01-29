@@ -40,7 +40,7 @@ exports.signin = async (req, res) => {
         })
     }
 
-    const token = jwt.sign({ id: user.email }, "SECRET_KEY", { expiresIn: '120d' });
+    const token = jwt.sign({ id: user._id }, "SECRET_KEY", { expiresIn: '120d' });
 
     return res.status(200).send({
         email: user.email,
