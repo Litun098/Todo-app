@@ -30,6 +30,22 @@ exports.getAllTodos = async (req,res)=>{
         })
     }
 }
+exports.getTodo = async (req,res)=>{
+    const userId = req.userId;
+    const todoId = req.body.id; 
+    try{
+        const todos = await Todo.find({_id:todoId},{userId:userId});
+        res.status(200).send({
+            success:true,
+            Todos:todos
+        })
+    }catch(err){
+        console.log(err.message);
+        return res.status(500).send({
+            message: "Something went wrong."
+        })
+    }
+}
 
 exports.updateTodo = async (req, res)=>{
     const todoId = req.params.id;

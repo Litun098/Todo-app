@@ -1,9 +1,7 @@
 const bcrypt = require('bcrypt');
 const express = require('express');
 const User = require('../models/user');
-const constants = require('../utils/constants');
 const jwt = require('jsonwebtoken');
-const config = require('../configs/auth.config');
 
 exports.signup = async (req, res) => {
     const email = req.body.email;
